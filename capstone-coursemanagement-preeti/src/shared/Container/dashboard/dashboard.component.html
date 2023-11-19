@@ -1,0 +1,222 @@
+<main class="content p-4">
+    <app-topbar></app-topbar>
+    <div class="" >
+        
+                    <div class="row p-5 d-flex justify-content-center">
+                        <!-- Average Time spent by user -->
+                        <div class="col-lg-5 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Average Time Spent By Users</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2hrs 30mins</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clock fa-2x text-gray-300 text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ranking of user -->
+                        <div class="col-lg-5 mb-4" *ngIf="this.userService.loggedUserRole=='STUDENT'">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                Top</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">60.8</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-ranking-star fa-2x text-secondary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Percentage of course completed-->
+                        <div class="col-lg-5 mb-4" *ngIf="this.userService.loggedUserRole=='STUDENT'">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Course Completion Status
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">60%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%;color: green;" aria-valuenow="90" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-check fa-2x text-success"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- No of courses enrolled -->
+                        <div class="col-lg-5 mb-4" *ngIf="this.userService.loggedUserRole=='STUDENT'">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Courses Enrolled</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{this.userService.numberOfCourses}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-book fa-2x text-warning"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Total  No of courses -->
+                        <div class="col-lg-5 mb-4" *ngIf="this.userService.loggedUserRole!='STUDENT'">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                No of Courses </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{this.totalCourses.length}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-warning"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 d-flex justify-content-center" *ngIf="this.userService.loggedUserRole=='STUDENT'">
+                             <!--Test score -->
+                             <div class="col-lg-5 me-3" *ngIf="this.userService.loggedUserRole=='STUDENT'">
+                                <div class="card shadow h-100 py-2 p-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                   Score </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{(this.userService.testScore/4)*100}}</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-comments fa-2x text-warning"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Average time spent by user graph-->
+                            <div class="col-lg-5">
+                                <div class="card flex-fill w-100">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Average Time Spent</h5>
+                                    </div>
+                                    <div class="card-body py-3">
+                                        <div class="chart chart-sm">
+                                        <canvas baseChart width="400" height="250"
+                                        [type]="'line'"
+                                        [data]="lineChartData"
+                                        [options]="lineChartOptions"
+                                        >
+                                        </canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center p-5">
+                            <div class="d-flex flex-column me-5 col-lg-5">
+                                <!--No of Registered Learners-->
+                                <div class="mb-5" *ngIf="this.userService.loggedUserRole!='STUDENT'">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        No of Registered Users </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-300">{{this.userService.userLen}}</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-comments fa-2x text-success"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Rating-->
+                                <div class="mb-4" *ngIf="this.userService.loggedUserRole!='STUDENT'">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                        User rating </div>
+                                                    <div class="h5 mb-0 font-weight-bold">90% of users loved the application</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-heart fa-2x text-danger"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Average time spent by user graph-->
+                            <div class="col-lg-5" *ngIf="this.userService.loggedUserRole!='STUDENT'">
+                                <div class="card flex-fill w-100">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Average Time Spent</h5>
+                                    </div>
+                                    <div class="card-body py-3">
+                                        <div class="chart chart-sm">
+                                        <canvas baseChart width="400" height="250"
+                                        [type]="'line'"
+                                        [data]="lineChartData"
+                                        [options]="lineChartOptions"
+                                        >
+                                        </canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    <h3 class="mt-1">Top Rated Courses</h3>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-3 card mt-4 me-5 p-1" *ngFor="let course of courses">
+                    <img src={{course.image}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-title">{{course.name}}</p>
+                      <p class="card-text">{{course.instructor_name}}</p>
+                      <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]="course.rating" [color]="'#fca821'"></ngx-stars>
+                      <div class="d-flex justify-content-center">
+                        <button class="btn btn-outline-primary mt-4" (click)="viewCourse(course.id)">View course</button>
+                      </div>
+                    </div>
+            </div>
+        </div>    
+    </div>
+</main> 

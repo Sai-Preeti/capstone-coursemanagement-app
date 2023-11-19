@@ -1,0 +1,33 @@
+<div class="login-container p-5 mt-3">
+    <form [formGroup]="courseForm" (submit)="addCourse()"
+    >
+        <h1 class="text-center mb-5">New Course</h1>
+        <label for="">Name</label>
+        <input type="text" class="form-control mt-2" formControlName="name">
+        <label for="" class="mt-4">Instructor Name</label>
+        <input type="text" class="form-control" formControlName="instructor_name">
+        <label for="" class="mt-4">Image</label>
+        <input type="text" class="form-control" formControlName="image">
+        <label class="mt-4">Videos:</label>
+        <div formArrayName="videos">
+            <i class="fa-solid fa-plus" (click)="addVideo()" style="color:#0f62f0"></i>
+            <div *ngFor="let video of videos.controls; let i = index;" [formGroupName]="i">
+              <hr>
+              <div class="d-flex justify-content-between">
+              </div>
+              <div>
+                <div class="form-group">
+                  <label >Video Name:</label>
+                  <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div class="form-group">
+                  <label >Video URL:</label>
+                  <input type="text" class="form-control" formControlName="url">
+                </div>
+                <i class="fa-solid fa-trash" (click)="removeVideo(i)" style="color:#0f62f0"></i>
+              </div> 
+            </div> 
+        </div>
+        <button class="btn btn-primary" (click)="addCourse()">Add course</button>
+    </form>
+</div>

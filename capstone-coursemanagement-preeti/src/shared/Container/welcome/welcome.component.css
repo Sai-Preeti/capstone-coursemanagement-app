@@ -1,0 +1,10 @@
+.bg-img{
+    opacity:0.9;
+    width:100%
+}
+
+  
+  /* Define the bg-gradient-primary-to-secondary class */
+  .badge {
+    background-image: linear-gradient(to right,rgb(35, 101, 255),  rgb(57, 209, 255));
+  }

@@ -1,0 +1,8 @@
+<div class="container mt-5">
+    <h2 class="d-flex justify-content-center">Are you sure you want to delete the course</h2>
+    <h4 class="d-flex justify-content-center text-primary">{{dialogTitle}}</h4>
+    <div mat-dialog-actions class="d-flex justify-content-center">
+        <button mat-button mat-dialog-close>No</button>
+        <button mat-button mat-dialog-close cdkFocusInitial (click)="deleteCourse()">Ok</button>
+    </div>
+</div>

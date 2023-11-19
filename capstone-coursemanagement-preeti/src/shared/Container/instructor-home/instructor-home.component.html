@@ -1,0 +1,52 @@
+
+<div class="maindiv p-4" >
+  <div class="d-flex justify-content-between align-items-center">
+    <a class="navbar-brand logo" routerLink="/"><span class="fw-bolder text-primary mt-5" style="font-size: x-large;">SkillzUP</span></a>
+    <mat-expansion-panel class="user-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          <mat-icon >account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>  
+      <h3 class="user-name">{{userService.loggedUser}}</h3>
+      <p class="user-role">Role: {{userService.loggedUserRole}}</p>
+      <p class="text-primary" (click)="logout()">Logout</p>
+    </mat-expansion-panel>
+  </div>
+    <div class="row">
+      <div class="col-lg-3" style="height: 100vh;">
+        <app-sidebar></app-sidebar>
+      </div>
+      <section class="col-lg-9 d-flex justify-content-center mt-5">
+        <img src="https://qph.cf2.quoracdn.net/main-qimg-5e75fe02f47123690a18d5a278f19b34" alt="">
+        <app-chat></app-chat>
+      </section>
+    </div>
+  </div>
+  <section class="bg-light py-1">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xxl-8">
+                <div class="text-center my-5">
+                    <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About</span></h2>
+                    <p class="lead fw-light mb-4">Unlock Your Learning Potential</p>
+                    <p class="text-muted">A tool designed to help educational institutions and instructors manage their courses and communicate with students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  <footer class="bg-white py-4 mt-auto">
+    <div class="container px-5">
+        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+            <div class="col-auto"><div class="small m-0">Copyright &copy; SkillzUP 2023</div></div>
+            <div class="col-auto">
+                <a class="small" href="#!">Privacy</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="#!">Terms</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="#!">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>  

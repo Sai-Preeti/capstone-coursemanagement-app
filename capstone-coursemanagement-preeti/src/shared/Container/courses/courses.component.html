@@ -1,0 +1,30 @@
+<div class="main-div p-4">
+    <app-topbar></app-topbar>
+</div>
+<form [formGroup]="searchForm" class="m-5">
+  <div class="search-div d-flex align-items-center" >
+    <i class="fa-solid fa-xl fa-magnifying-glass me-2"></i>
+    <input type="text" formControlName="search" class="form-control ps-5">
+  </div>
+</form>
+<div class="add-course-button d-flex justify-content-center" *ngIf="this.userService.loggedUserRole=='INSTRUCTOR'">
+<button (click)="openDialog()" class="btn btn-success mt-5 ms-5">Add course</button>
+</div>
+<div class="container">
+    <div class="row ms-5">
+        <div class="col-lg-3 col-md-4 col-sm-4 card mt-4 me-5" *ngFor="let course of courses">
+                <img src={{course.image}} class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text">{{course.name}}</p>
+                  <p class="card-text">{{course.instructor_name}}</p>
+                  <ngx-stars [readonly]="true" [maxStars]="5" [initialStars]="course.rating" [color]="'#fca821'"></ngx-stars>
+                  <div class="d-flex justify-content-between mt-4" >
+                    <button class="btn btn-outline-primary" (click)="viewCourse(course.id);enroll(course.name,course.instructor_name)" *ngIf="this.userService.loggedUserRole=='STUDENT'">Start course</button>
+                    <button class="btn btn-outline-primary" (click)="viewCourse(course.id)" *ngIf="this.userService.loggedUserRole!='STUDENT'">View course</button>
+                    <i class="fas fa-trash fa-xl text-danger" (click)="openDeleteConfirmationDialog(course.name,course.id)" *ngIf="this.userService.loggedUserRole=='ADMIN'"></i>
+                  </div>
+                </div>
+        </div>
+    </div>    
+</div>
+

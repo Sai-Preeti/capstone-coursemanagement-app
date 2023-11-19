@@ -1,0 +1,62 @@
+ export const json = {
+  title: "Python Basics",
+  pages: [{
+      elements: [{
+          type: "radiogroup",
+          name: "civilwar",
+          title: "How is a code block indicated in Python?",
+          choicesOrder: "random",
+          choices: [
+              "Brackets", "Indentation", "Key", "None of the above"
+          ],
+          correctAnswer: "Indentation",
+          score:1
+      }]
+  }, {
+      elements: [{
+          type: "radiogroup",
+          name: "libertyordeath",
+          title: "Which of the following types of loops are not supported in Python?",
+          choicesOrder: "random",
+          choices: [
+              "for", "while", "do-while", "None of the above"
+          ],
+          correctAnswer: "do-while",
+          score:1
+      }]
+  }, 
+  {
+      elements: [{
+          type: "radiogroup",
+          name: "magnacarta",
+          title: "Which of the following functions converts date to corresponding time in Python?",
+          choicesOrder: "random",
+          choices: [
+              "strptime()",
+              "strftime()",
+              "Both",
+              "None of the above"
+          ],
+          correctAnswer: "strptime()",
+          score:1
+      }]
+  },
+  {
+    elements: [{
+        type: "radiogroup",
+        name: "func",
+        title: "As what datatype are the *args stored, when passed into a function?",
+        choicesOrder: "random",
+        choices: [
+            "List",
+            "Tuple",
+            "Dictionary",
+            "None of the above"
+        ],
+        correctAnswer: "Tuple",
+        score:1
+    }]
+}
+]
+};
+

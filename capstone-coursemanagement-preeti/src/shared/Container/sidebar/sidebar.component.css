@@ -1,0 +1,33 @@
+
+ a{
+  color: rgb(119, 119, 119);
+ }
+ .menu-item {
+   display: flex;
+   margin-top: 1.5rem;
+   /* color: #0d6efd; */
+   font-size: 1.15rem;
+   text-decoration: none;
+   border-radius: 999px;
+   padding: 0.8rem 1.0rem;
+   transition: all 0.3s ease-in-out;
+   width: 80%;
+   max-width: 25rem;
+   text-align: center;
+ }
+ 
+ .menu-item:hover {
+   background-color: #0d6efd;
+   color: white;
+   transform: translateY(-2px);
+ }
+ 
+ .menu-item i {
+   font-size: 1.5rem;
+   margin-right: 0.75rem;
+ }
+
+ nav{
+  position: sticky;
+  top: 0;
+ }

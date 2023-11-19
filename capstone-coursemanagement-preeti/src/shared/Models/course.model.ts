@@ -1,0 +1,22 @@
+export class Course {
+    id:string
+    name:string
+    description:string
+    instructor_name:string
+    image:string
+    videos:[
+        {
+        name:string
+        url:string
+        }
+    ]
+    constructor(id:string,name:string,description:string,instructor_name:string,image:string,videos:any)
+    {
+        this.id=id;
+        this.name=name;
+        this.description=description;
+        this.instructor_name=instructor_name;
+        this.image=image;
+        this.videos=videos;
+    }
+}

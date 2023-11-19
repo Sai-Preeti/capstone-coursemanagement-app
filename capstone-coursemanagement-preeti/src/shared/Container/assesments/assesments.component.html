@@ -1,0 +1,26 @@
+<div class="main-div p-4">
+    <a class="navbar-brand logo" *ngIf="this.userService.loggedUserRole=='INSTRUCTOR'" routerLink="/Ihome"><span class="fw-bolder text-primary mt-5" style="font-size: x-large;">SkillzUP</span></a>
+      <a class="navbar-brand logo" *ngIf="this.userService.loggedUserRole!='INSTRUCTOR'" routerLink="/home"><span class="fw-bolder text-primary mt-5" style="font-size: x-large;">SkillzUP</span></a>
+</div>
+<div class="container p-4">
+    <div class="row">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let assessment of assessments;index as i">
+                            <td>{{assessment.title}}</td>
+                            <td class="d-flex justify-content-center"><button class="btn btn-primary" routerLink="/startQuiz" (click)="setIndex(i)">Start quiz</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

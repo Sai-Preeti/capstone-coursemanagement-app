@@ -1,0 +1,47 @@
+@media (max-width:576px)
+{
+    .login-container{
+        width:70%;
+        height: 80%;
+        margin-left: 15%;
+    }
+    button{
+        margin-left: 25%;
+    }
+    p{
+        margin-left: 5%;
+    }
+}
+
+@media (min-width:577px) and (max-width:768px)
+{
+
+    .login-container{
+        width:70%;
+        height: 80%;
+        margin-left: 15%;
+    }
+    button{
+        margin-left: 42%;
+    }
+
+    p{
+        margin-left: 25%;
+    }
+}
+
+@media (min-width:769px) 
+{
+
+    .login-container{
+        width:30%;
+        height: 60%;
+        margin-left: 35%;
+    }
+    button{
+        margin-left: 42%;
+    }
+    p{
+        margin-left: 25%;
+    }
+}

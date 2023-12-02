@@ -1,5 +1,6 @@
 package com.example.CourseManagement.models;
-
+import com.example.CourseManagement.models.Video;
+import com.example.CourseManagement.models.Pdf;
 
 import lombok.Getter;
 import org.bson.types.ObjectId;
@@ -9,49 +10,6 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
-
-class Video {
-    public String name;
-    public String url;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-}
-class Pdf {
-
-    public String name;
-    public String url;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-}
 
 @Document(collection="Courses")
 public class Course {

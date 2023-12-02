@@ -1,8 +1,10 @@
 package com.example.CourseManagement.controller;
 
+import com.example.CourseManagement.services.AssessmentService;
 import com.example.CourseManagement.models.Assessment;
 import com.example.CourseManagement.repository.AssessmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +18,13 @@ import java.util.List;
 public class AssessmentController {
 
     @Autowired
-    private AssessmentRepository assessmentRepository;
+    private AssessmentService assessmentService;
+
+
 
     @GetMapping("/get")
-    public List<Assessment> getCourses()
+    public ResponseEntity<List<Assessment>> getAssessments()
     {
-        return assessmentRepository.findAll();
+        return ResponseEntity.ok(this.assessmentService.getAllAssessments());
     }
 }

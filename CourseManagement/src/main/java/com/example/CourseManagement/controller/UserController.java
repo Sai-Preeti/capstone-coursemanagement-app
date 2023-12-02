@@ -5,6 +5,7 @@ import com.example.CourseManagement.models.Course;
 import com.example.CourseManagement.models.User;
 import com.example.CourseManagement.repository.CourseRepository;
 import com.example.CourseManagement.repository.UserRepository;
+import com.example.CourseManagement.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,26 +16,22 @@ import java.util.List;
 @RequestMapping("/users")
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserService userService;
+    UserController(UserService userService)
+    {
+        this.userService=userService;
+    }
 
     @GetMapping("/get")
-    public List<User> getCourses()
+    public ResponseEntity<List<User>> getUsers()
     {
-        return userRepository.findAll();
+        return ResponseEntity.ok(this.userService.getUsers());
     }
 
     @PostMapping("/addUser")
-    public ResponseEntity<?> addTemp(@RequestBody User user)
+    public void addUser(@RequestBody User user)
     {
-        System.out.println(this.userRepository.findByName(user.getName()));
-        if(this.userRepository.findByName(user.getName())==null) {
-            System.out.println("here");
-            User savedUser = this.userRepository.save(user);
-            System.out.println("saved stude= "+savedUser.getName());
-            return ResponseEntity.ok(savedUser);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
+        this.userService.addUser(user);
     }
 }

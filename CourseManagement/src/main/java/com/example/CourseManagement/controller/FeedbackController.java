@@ -5,6 +5,7 @@ import com.example.CourseManagement.models.Course;
 import com.example.CourseManagement.models.Feedback;
 import com.example.CourseManagement.repository.CourseRepository;
 import com.example.CourseManagement.repository.FeedbackRepository;
+import com.example.CourseManagement.services.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,27 +17,25 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class FeedbackController {
 
+
+    private final FeedbackService feedbackService;
+
     @Autowired
     private FeedbackRepository feedbackRepository;
-    @GetMapping("/get")
-    public List<Feedback> getCourses()
+    FeedbackController(FeedbackService feedbackService)
     {
-        return feedbackRepository.findAll();
+        this.feedbackService=feedbackService;
+    }
+    @GetMapping("/get")
+    public ResponseEntity<List<Feedback>> getFeedback()
+    {
+        return ResponseEntity.ok(this.feedbackService.getFeedback());
     }
 
     @PostMapping("/addFeedback")
-    public ResponseEntity<?> addTemp(@RequestBody Feedback feedback)
+    public void addTemp(@RequestBody Feedback feedback)
     {
-        System.out.println(this.feedbackRepository.findByName(feedback.getName()));
-        if(this.feedbackRepository.findByName(feedback.getName())==null) {
-            System.out.println("here");
-            Feedback savedFeedback = this.feedbackRepository.save(feedback);
-            System.out.println("saved feedback= "+savedFeedback.getName());
-            return ResponseEntity.ok(savedFeedback);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-//        return ResponseEntity.badRequest().build();
+        this.feedbackService.addFeedback(feedback);
     }
 
 }

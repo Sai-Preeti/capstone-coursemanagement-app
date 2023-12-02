@@ -5,6 +5,7 @@ import com.example.CourseManagement.models.Feedback;
 import com.example.CourseManagement.models.Issue;
 import com.example.CourseManagement.repository.FeedbackRepository;
 import com.example.CourseManagement.repository.IssueRepository;
+import com.example.CourseManagement.services.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,26 +17,21 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class IssueController {
 
-    @Autowired
-    private IssueRepository issueRepository;
-    @GetMapping("/get")
-    public List<Issue> getCourses()
+
+    private final IssueService issueService;
+    IssueController(IssueService issueService)
     {
-        return issueRepository.findAll();
+        this.issueService=issueService;
+    }
+    @GetMapping("/get")
+    public ResponseEntity<List<Issue>> getIssues()
+    {
+        return ResponseEntity.ok(this.issueService.getIssues());
     }
 
     @PostMapping("/addIssue")
-    public ResponseEntity<?> addTemp(@RequestBody Issue issue)
+    public void addIssue(@RequestBody Issue issue)
     {
-        System.out.println(this.issueRepository.findByName(issue.getName()));
-        if(this.issueRepository.findByName(issue.getName())==null) {
-            System.out.println("here");
-            Issue savedIssue = this.issueRepository.save(issue);
-            System.out.println("saved feedback= "+savedIssue.getName());
-            return ResponseEntity.ok(savedIssue);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-//        return ResponseEntity.badRequest().build();
+        this.issueService.addIssue(issue);
     }
 }

@@ -1,6 +1,7 @@
 package com.project.coursemanagement.controller;
 
 import com.project.coursemanagement.models.Course;
+import com.project.coursemanagement.models.Response;
 import com.project.coursemanagement.services.CourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,9 +36,9 @@ public class CourseController {
        courseService.delete(course);
     }
     @PostMapping("/addCourse")
-    public ResponseEntity<Course> addTemp(@RequestBody Course course)
+    public ResponseEntity<Response> addCourse(@RequestBody Course course)
     {
-        return courseService.addTemp(course);
+        return courseService.addCourse(course);
     }
 
 }

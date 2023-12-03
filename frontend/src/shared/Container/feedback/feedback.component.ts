@@ -40,7 +40,9 @@ export class FeedbackComponent implements OnInit{
         if(this.feedbackForm.valid)
         {
           this.feedbackService.postFeedback(this.feedbackForm.value).subscribe((response:any)=>{
-            console.log("dialog res" ,response)
+            console.log("dialog res" ,response);
+            window.location.reload();
+            window.alert("Feedback saved")
           });
         }
       }

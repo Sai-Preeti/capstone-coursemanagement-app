@@ -38,7 +38,9 @@ export class ReportissueComponent {
     if(this.issueForm.valid)
     {
       this.issueService.postIssue(this.issueForm.value).subscribe((response:any)=>{
-        console.log("dialog res" ,response)
+        console.log("dialog res" ,response);
+        window.location.reload();
+        window.alert("Issue saved")
       });
     }
   }

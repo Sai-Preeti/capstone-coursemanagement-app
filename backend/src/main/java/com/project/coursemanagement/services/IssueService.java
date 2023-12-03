@@ -27,6 +27,5 @@ public class IssueService {
     {
             Issue savedIssue = this.issueRepository.save(issue);
             return ResponseEntity.ok(savedIssue);
-
     }
 }
